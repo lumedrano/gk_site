@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+
+  /* Hill Country palette: limestone, live oak, cedar, bronze */
+  --color-cream:     #F5F1E8;
+  --color-stone:     #EBE4D6;
+  --color-sand:      #D9CDB6;
+  --color-ink:       #1F2A26;
+  --color-ink-2:     #2E3B36;
+  --color-muted:     #5E6A64;
+  --color-line:      #DCD3C2;
+  --color-bronze:    #A8743F;
+  --color-bronze-ink:#8A5E31;
+  --color-sage:      #7E8F7C;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-bronze-ink);
+}
+
+.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .85rem 1.5rem; border-radius: 999px;
+  font-weight: 600; font-size: .92rem;
+  transition: background-color .2s, color .2s, border-color .2s, transform .2s;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--color-ink); color: var(--color-cream); }
+.btn-primary:hover { background: var(--color-bronze-ink); }
+.btn-ghost { border: 1px solid currentColor; }
+.btn-ghost:hover { background: var(--color-ink); color: var(--color-cream); border-color: var(--color-ink); }
+.btn-light { background: var(--color-cream); color: var(--color-ink); }
+.btn-light:hover { background: var(--color-sand); }
+
+.field {
+  width: 100%; background: #fff; border: 1px solid var(--color-line); border-radius: 10px;
+  padding: .8rem 1rem; font-size: .95rem; color: var(--color-ink);
+  transition: border-color .15s, box-shadow .15s;
+}
+.field:focus { outline: none; border-color: var(--color-bronze); box-shadow: 0 0 0 3px rgb(168 116 63 / .18); }
+
+/* Gentle entrance for sections as they scroll into view */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+:focus-visible { outline: 2px solid var(--color-bronze); outline-offset: 3px; }
