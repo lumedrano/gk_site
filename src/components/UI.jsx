@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-/** Fades children in once they scroll into view. */
 export function Reveal({ as: Tag = 'div', className = '', delay = 0, children, ...rest }) {
   const ref = useRef(null);
   useEffect(() => {

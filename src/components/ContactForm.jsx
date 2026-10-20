@@ -18,7 +18,6 @@ export default function ContactForm() {
     data.interest = interest;
 
     if (!ENDPOINT) {
-      // No form backend configured: hand off to the visitor's email app.
       const body = Object.entries(data).map(([k, v]) => `${k}: ${v}`).join('\n');
       window.location.href = `mailto:${agent.email}?subject=${encodeURIComponent(`Website inquiry: ${interest}`)}&body=${encodeURIComponent(body)}`;
       setStatus('sent');
@@ -103,7 +102,7 @@ export default function ContactForm() {
         />
       </label>
 
-      {/* Honeypot field, hidden from people */}
+      {/* Honeypot */}
       <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 
       {status === 'error' && (

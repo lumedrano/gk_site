@@ -2,9 +2,7 @@ import { Link } from 'react-router-dom';
 import { agent } from '../content/site.js';
 import { Container, Icon } from './UI.jsx';
 
-// Texas Real Estate Commission requires every license holder's website to link
-// to the Information About Brokerage Services form and the Consumer Protection
-// Notice, labeled as below. Replace IABS_URL with the broker's completed IABS PDF.
+// TODO: replace with the broker's completed IABS PDF (required by TREC).
 const IABS_URL = 'https://www.trec.texas.gov/forms/information-about-brokerage-services';
 const CPN_URL = 'https://www.trec.texas.gov/forms/consumer-protection-notice';
 

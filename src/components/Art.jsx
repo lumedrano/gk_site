@@ -1,6 +1,5 @@
 import { agent } from '../content/site.js';
 
-/** Layered Hill Country horizon used as the hero backdrop. */
 export function HillsArt({ className = '' }) {
   return (
     <svg className={className} viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
@@ -35,7 +34,6 @@ export function HillsArt({ className = '' }) {
   );
 }
 
-/** Headshot if one is configured, otherwise an elegant monogram card. */
 export function Portrait({ className = '' }) {
   if (agent.headshot) {
     return <img src={agent.headshot} alt={`Portrait of ${agent.name}`} className={`h-full w-full object-cover ${className}`} />;

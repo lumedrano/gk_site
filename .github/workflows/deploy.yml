@@ -34,7 +34,7 @@ jobs:
       - name: Build
         run: |
           npm run build
-          # SPA fallback so deep links / refreshes resolve to the React app
+          # SPA fallback for client-side routes
           cp dist/index.html dist/404.html
           touch dist/.nojekyll
         env:

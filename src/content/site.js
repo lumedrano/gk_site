@@ -1,26 +1,17 @@
-// ---------------------------------------------------------------------------
-// All editable site content lives here. Update this file (not the components)
-// to change copy, contact info, testimonials, areas, etc.
-//
-// Items marked VERIFY came from public profiles and should be confirmed with
-// George before launch. Items marked TODO are placeholders.
-// ---------------------------------------------------------------------------
+// [Bracketed] values are placeholders until confirmed with George.
 
 export const agent = {
   name: 'George Kalafut',
   firstName: 'George',
   title: 'REALTOR®',
   tagline: 'Austin real estate, seen through a builder’s eye.',
-  // VERIFY: public profiles list different brokerages. Texas advertising rules
-  // require the sponsoring broker's name on the site.
-  brokerage: 'Phyllis Browning Company',
-  brokerageAddress: '2785 Bee Caves Rd, Suite 351, Rollingwood, TX 78746', // VERIFY
-  license: 'TX License #693258', // VERIFY
-  phone: '(512) 555-0123', // TODO: real phone
-  email: 'hello@georgekalafut.com', // TODO: real email
+  brokerage: '[Brokerage name]',
+  brokerageAddress: '[Office address]',
+  license: 'TX License #[License number]',
+  phone: '[Phone number]',
+  email: '[Email address]',
   city: 'Austin, Texas',
-  // Drop a headshot at public/images/george.jpg and set this to
-  // `${import.meta.env.BASE_URL}images/george.jpg` (works on GitHub Pages and Vercel).
+  // e.g. `${import.meta.env.BASE_URL}images/george.jpg`
   headshot: null,
   social: {
     instagram: '', // TODO
@@ -30,28 +21,27 @@ export const agent = {
 };
 
 export const stats = [
-  { value: '9+', label: 'Years in real estate' }, // VERIFY
-  { value: '2024', label: 'Top Producing Agent' }, // VERIFY
+  { value: '[#]+', label: 'Years in real estate' },
+  { value: '[Year]', label: '[Award or recognition]' },
   { value: '59', label: 'Central Texas communities served' },
-  { value: 'B.S.', label: 'Construction Management, Kent State' },
+  { value: '[Degree]', label: '[Field of study, University]' },
 ];
 
 export const bio = {
   intro:
-    'Originally from Ohio, George found his way to real estate early, first as a student of how buildings come together, then as a developer, investor and agent. Today he helps buyers, sellers and investors across Austin and the Hill Country make confident, well-informed moves.',
+    'Originally from [Hometown], George found his way to real estate early, first as a student of how buildings come together, then as a developer, investor and agent. Today he helps buyers, sellers and investors across Austin and the Hill Country make confident, well-informed moves.',
   paragraphs: [
-    'George earned his degree in Construction Management from Kent State University and spent years in commercial real estate development across Texas. That background shapes everything he does: he walks a property the way a builder does, noticing foundation movement, roof age, drainage and the renovation potential most people miss.',
+    'George earned his degree in [Field of study] from [University] and spent [number of years] in [prior career / industry]. That background shapes everything he does: he walks a property the way a builder does, noticing foundation movement, roof age, drainage and the renovation potential most people miss.',
     'As an investor himself, he understands numbers as well as he understands curb appeal. Whether you are buying your first home, selling a property that has sat too long, or looking for a value-add project, George brings a practical, data-minded approach and tells you plainly what he sees.',
     'Above all, he believes great real estate is about people. He takes time to understand your goals, communicates clearly at every step, and stays with you well past closing day.',
   ],
-  // VERIFY: from public profile; confirm current memberships/designations.
   credentials: [
-    'B.S. Construction Management, Kent State University',
-    'Background in commercial real estate development',
+    '[Degree], [University]',
+    '[Professional background]',
     'Active real estate investor',
-    'Design-Build Institute of America, member',
-    'Austin Luxury Network, member',
-    '2024 Top Producing Agent',
+    '[Professional membership]',
+    '[Professional membership]',
+    '[Award or recognition]',
   ],
 };
 
@@ -111,15 +101,12 @@ export const serviceArea = [
   'Sunset Valley', 'Taylor', 'West Lake Hills', 'Wimberley',
 ];
 
-// Confirm each client is happy to be quoted on the site before launch.
 export const testimonials = [
   {
-    quote:
-      'After six months of failed attempts to sell our home, we hired George and were under contract within days. He went way above and beyond for us. I highly recommend George for all your real estate needs!',
-    name: 'Jackie W.',
-    context: 'Home seller',
+    quote: '[Client testimonial, pending...]',
+    name: '[Client name]',
+    context: '[Home buyer / seller]',
   },
-  // TODO: add more client reviews in this shape.
 ];
 
 export const faqs = [

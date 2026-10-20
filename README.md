@@ -30,8 +30,8 @@ npm run preview   # serve the production build locally
 
 In that file:
 
-- Comments marked `TODO` are placeholders (phone, email, social links) and must be filled in.
-- Comments marked `VERIFY` came from public agent profiles and should be confirmed with George (brokerage, license number, years of experience, awards, memberships).
+- Values in `[square brackets]` are placeholders for details not yet confirmed with George: phone, email, brokerage and office address, license number, education, hometown, prior career, years of experience, awards, memberships and the client testimonial. Replace each one before launch.
+- Comments marked `TODO` (social links) must also be filled in.
 
 ### Headshot and photos
 

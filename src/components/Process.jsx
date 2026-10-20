@@ -1,6 +1,5 @@
 import { Container, Reveal, SectionHeading } from './UI.jsx';
 
-/** Numbered timeline of steps, used on the Buy and Sell pages. */
 export default function Process({ eyebrow, title, steps }) {
   return (
     <section className="py-20 sm:py-28">
