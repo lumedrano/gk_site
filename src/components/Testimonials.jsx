@@ -1,38 +1,42 @@
+import { useState } from 'react';
 import { testimonials } from '../content/site.js';
-import { Container, Reveal, SectionHeading } from './UI.jsx';
+import { Container, Reveal } from './UI.jsx';
 
-export default function Testimonials() {
+/** Centered editorial quote; becomes a simple slider once there is more than one testimonial. */
+export default function Testimonials({ id }) {
+  const [i, setI] = useState(0);
   if (!testimonials.length) return null;
-  const [featured, ...rest] = testimonials;
+  const t = testimonials[i];
+  const many = testimonials.length > 1;
+  const go = (d) => setI((x) => (x + d + testimonials.length) % testimonials.length);
 
   return (
-    <section className="bg-stone/70 py-20 sm:py-28">
-      <Container>
-        <SectionHeading eyebrow="Client stories" title="Trusted when it matters." />
-        <Reveal className="mt-12">
-          <figure className="relative rounded-2xl bg-cream p-8 shadow-[0_10px_40px_-20px_rgba(31,42,38,.35)] sm:p-12">
-            <span className="display absolute -top-6 left-8 text-8xl leading-none text-bronze/40" aria-hidden="true">“</span>
-            <blockquote className="display text-2xl leading-snug text-ink sm:text-3xl">{featured.quote}</blockquote>
-            <figcaption className="mt-8 flex items-center gap-3 text-sm">
-              <span className="h-px w-10 bg-bronze" />
-              <span className="font-semibold">{featured.name}</span>
-              <span className="text-muted">· {featured.context}</span>
+    <section id={id} className="bg-cream py-20 lg:py-28">
+      <Container className="text-center">
+        <Reveal><p className="eyebrow justify-center">Client stories</p></Reveal>
+        <Reveal delay={100}>
+          <span className="display mt-10 block text-8xl leading-[.5] text-gold" aria-hidden="true">“</span>
+        </Reveal>
+        <Reveal delay={200}>
+          <figure key={i} className="mx-auto max-w-4xl animate-[fade_.8s_var(--ease-out)]">
+            <blockquote className="display text-3xl font-medium italic leading-snug text-navy sm:text-[2.6rem]">{t.quote}</blockquote>
+            <figcaption className="mt-10 flex items-center justify-center gap-4 text-sm">
+              <span className="h-px w-10 bg-gold" />
+              <span className="font-semibold uppercase tracking-[.18em] text-navy">{t.name}</span>
+              <span className="text-muted">{t.context}</span>
+              <span className="h-px w-10 bg-gold" />
             </figcaption>
           </figure>
         </Reveal>
-        {rest.length > 0 && (
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {rest.map((t, i) => (
-              <Reveal key={t.name} delay={i * 80}>
-                <figure className="h-full rounded-2xl border border-line bg-cream p-8">
-                  <blockquote className="leading-relaxed text-ink-2">“{t.quote}”</blockquote>
-                  <figcaption className="mt-5 text-sm">
-                    <span className="font-semibold">{t.name}</span>
-                    <span className="text-muted"> · {t.context}</span>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
+        {many && (
+          <div className="mt-12 flex items-center justify-center gap-6">
+            <button type="button" onClick={() => go(-1)} className="flex h-12 w-12 items-center justify-center rounded-full border border-navy/30 text-navy transition-colors hover:border-navy hover:bg-navy hover:text-cream" aria-label="Previous testimonial">
+              <svg className="h-4 w-4 rotate-180" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" /></svg>
+            </button>
+            <span className="text-xs font-semibold tracking-[.2em] text-muted">{String(i + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}</span>
+            <button type="button" onClick={() => go(1)} className="flex h-12 w-12 items-center justify-center rounded-full border border-navy/30 text-navy transition-colors hover:border-navy hover:bg-navy hover:text-cream" aria-label="Next testimonial">
+              <svg className="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" /></svg>
+            </button>
           </div>
         )}
       </Container>

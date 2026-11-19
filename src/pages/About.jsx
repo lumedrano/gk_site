@@ -1,60 +1,57 @@
-import { agent, bio, specialties } from '../content/site.js';
+import { agent, bio, images, specialties, whyGeorge } from '../content/site.js';
 import { Portrait } from '../components/Art.jsx';
 import { Container, CtaBand, Icon, PageHero, Reveal, SectionHeading } from '../components/UI.jsx';
+import { ClipReveal, SplitText } from '../components/Motion.jsx';
 import Testimonials from '../components/Testimonials.jsx';
-
-const VALUES = [
-  { title: 'Candor', body: 'You’ll hear what George actually thinks about a house, a price or a strategy, even when it isn’t what you hoped.' },
-  { title: 'Communication', body: 'Clear, timely updates at every step, so you always know where things stand and what comes next.' },
-  { title: 'Craft', body: 'A builder’s attention to detail applied to contracts, negotiations and every deadline in between.' },
-];
 
 export default function About() {
   return (
     <>
       <PageHero
-        eyebrow="About George"
-        title="A builder’s background. A client-first approach."
+        eyebrow={`About ${agent.firstName}`}
+        title="A builder’s background. A _client-first_ approach."
         intro={bio.intro}
+        image={images.skyline}
       />
 
-      <section className="py-20 sm:py-28">
-        <Container className="grid gap-12 md:grid-cols-[5fr_7fr] md:gap-20">
-          <Reveal className="md:sticky md:top-28 md:self-start">
-            <div className="aspect-[4/5] overflow-hidden rounded-2xl">
+      <section className="py-20 lg:py-28">
+        <Container className="grid gap-14 md:grid-cols-[5fr_7fr] lg:gap-24">
+          <div className="md:sticky md:top-32 md:self-start">
+            <ClipReveal className="aspect-[4/5] overflow-hidden">
               <Portrait />
-            </div>
-            <div className="mt-6 rounded-2xl border border-line p-6 text-sm">
-              <p className="display text-xl">{agent.name}</p>
-              <p className="mt-1 text-muted">{agent.title} · {agent.brokerage}</p>
-              <p className="mt-1 text-muted">{agent.license}</p>
-            </div>
-          </Reveal>
+            </ClipReveal>
+            <Reveal delay={300} className="mt-6 border-l-2 border-gold bg-cream p-6 text-sm">
+              <p className="display text-xl text-navy">{agent.name}</p>
+              <p className="mt-1 text-muted">{agent.title} · {agent.team}</p>
+              <p className="mt-1 text-muted">Brokered by {agent.brokerage} · {agent.license}</p>
+            </Reveal>
+          </div>
 
           <div>
-            <Reveal>
-              <p className="eyebrow">The story</p>
-              <div className="mt-5 space-y-6 text-lg leading-relaxed text-ink-2">
+            <Reveal><p className="eyebrow">The story</p></Reveal>
+            <SplitText text="Seeing what others miss, and saying it plainly." className="display mt-5 text-4xl text-navy sm:text-5xl" />
+            <Reveal delay={150}>
+              <div className="prose-body mt-8 text-lg leading-relaxed text-body first-letter:float-left first-letter:mr-3 first-letter:font-serif first-letter:text-7xl first-letter:leading-[.85] first-letter:text-navy">
                 {bio.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
               </div>
             </Reveal>
 
-            <Reveal className="mt-14">
+            <Reveal className="mt-16">
               <p className="eyebrow">Credentials</p>
-              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+              <ul className="mt-6 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
                 {bio.credentials.map((c) => (
-                  <li key={c} className="flex items-start gap-3 rounded-xl bg-stone/60 p-4 text-sm text-ink-2">
+                  <li key={c} className="flex items-start gap-3 bg-paper p-5 text-[.95rem] text-body">
                     <Icon name="check" className="mt-0.5 h-5 w-5 shrink-0 text-bronze" /> {c}
                   </li>
                 ))}
               </ul>
             </Reveal>
 
-            <Reveal className="mt-14">
+            <Reveal className="mt-16">
               <p className="eyebrow">Specialties</p>
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-6 flex flex-wrap gap-2">
                 {specialties.map((s) => (
-                  <span key={s.key} className="rounded-full border border-line px-4 py-2 text-sm font-medium">{s.title}</span>
+                  <span key={s} className="border border-line px-5 py-2.5 text-xs font-semibold uppercase tracking-[.14em] text-navy">{s}</span>
                 ))}
               </div>
             </Reveal>
@@ -62,22 +59,23 @@ export default function About() {
         </Container>
       </section>
 
-      <section className="bg-ink py-20 text-cream sm:py-28">
+      <section id="why" className="on-navy bg-navy py-20 text-cream lg:py-28">
         <Container>
-          <SectionHeading light eyebrow="What to expect" title="How George works." />
-          <div className="mt-14 grid gap-10 md:grid-cols-3">
-            {VALUES.map((v, i) => (
-              <Reveal key={v.title} delay={i * 100}>
-                <p className="display text-6xl text-bronze">0{i + 1}</p>
-                <h3 className="display mt-4 text-3xl">{v.title}</h3>
-                <p className="mt-3 leading-relaxed text-sand">{v.body}</p>
+          <SectionHeading light eyebrow="What to expect" title={`How ${agent.firstName} works.`} />
+          <div className="mt-16 grid gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+            {whyGeorge.map((w, i) => (
+              <Reveal key={w.title} delay={i * 110} className="group relative bg-navy p-8 transition-colors duration-500 hover:bg-navy-2 lg:p-10">
+                <span className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gold transition-transform duration-700 ease-[var(--ease-out)] group-hover:scale-x-100" />
+                <p className="display text-6xl text-gold/80">0{i + 1}</p>
+                <h3 className="display mt-8 text-2xl">{w.title}</h3>
+                <p className="mt-4 leading-relaxed text-cream/70">{w.body}</p>
               </Reveal>
             ))}
           </div>
         </Container>
       </section>
 
-      <Testimonials />
+      <Testimonials id="stories" />
       <CtaBand />
     </>
   );
